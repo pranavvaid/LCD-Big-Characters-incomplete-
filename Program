@@ -1,0 +1,288 @@
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd(3, 2, 4, 5, 6, 7);
+
+void setup() {
+    lcd.begin(16, 2);
+    Serial.begin(9600);
+    analogWrite(9,255);
+    analogWrite(10,255);
+    analogWrite(11,255);
+    //analogWrite(9,255);
+    //analogWrite(10,255);
+    //analogWrite(11,255);
+    lcd.cursor();
+}
+
+void loop() {
+  bigPrint("1",2);
+  delay(5000);
+  bigPrint("2",2);
+  delay(2000);
+  bigPrint("3",2);
+  delay(2000);
+} 
+
+
+
+
+void basePrint(byte *TL, byte *TR, byte *BL, byte *BR, int posX){
+  
+    lcd.createChar(0,TL);
+    lcd.createChar(1,TR);
+    lcd.createChar(2,BL);
+    lcd.createChar(3,BR);
+    lcd.setCursor(posX,0);
+    lcd.write(byte(0));
+    lcd.write(byte(1));
+    lcd.setCursor(posX,1);
+    lcd.write(byte(2));
+    lcd.write(byte(3));
+}
+
+
+
+void printChar(int charPos, int posX){
+    //byte TL[36][8];
+    //byte TR[36][8];
+    //byte BL[36][8];
+    //byte BR[36][8];  
+    byte TLA[36][8] = {
+                      {0,0,0,0,0,0,0,0},
+                      {B00000, B00000, B00000, B00001, B00000, B00000, B00000, B00000},
+                      {B00111, B01111, B11100, B11000, B00000, B00000, B00000, B00000},
+                      {B00111, B01111, B11100, B11000, B00000, B00000, B00000, B00001},
+                      {B00001, B00011, B00011, B00110, B00110, B01100, B01100, B11100},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                    };
+    byte TRA[36][8] = {{0,0,0,0,0,0,0,0},
+                      {B00111, B01111, B11111, B11111, B00111, B00111, B00111, B00111},
+                      {B11100, B11110, B00111, B00011, B00011, B00011, B00111, B01110},
+                      {B11100, B11110, B01111, B00011, B00011, B00011, B11111, B11110},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                    };
+    byte BLA[36][8] = {{0,0,0,0,0,0,0,0},
+                      {B00000, B00000, B00000, B00000, B00000, B00000, B00000, B00000},
+                      {B00000, B00001, B00011, B00111, B01110, B11100, B11111, B11111},
+                      {B00001, B00000, B00000, B00000, B11000, B11100, B01111, B01111},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                    };
+    byte BRA[36][8] = {{0,0,0,0,0,0,0,0},
+                      {B00111, B00111, B00111, B00111, B00111, B00111, B00111, B00111},
+                      {B11100, B11000, B10000, B00000, B00000, B00000, B11111, B11111},
+                      {B11110, B11111, B00011, B00011, B00011, B01111, B11110, B11100},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                    };
+
+    basePrint(TLA[charPos], TRA[charPos], BLA[charPos], BRA[charPos], posX);
+}
+
+void bigPrint(String mystring,int posX){
+  for(int i = 0; i<mystring.length();i++){
+    printText(mystring[i],posX);
+    posX+=2;
+  }
+}
+
+void printText(char value,int posX){
+  switch(value){
+    case 'a':
+      break;
+    case 'b':
+      break;
+    case 'c':
+      break;
+    case 'd':
+      break;
+    case 'e':
+      break;
+    case 'f':
+      break;
+    case 'g':
+      break;
+    case 'h':
+      break;
+    case 'i':
+      break;
+    case 'j':
+      break;
+    case 'k':
+      break;
+    case 'l':
+      break;
+    case 'm':
+      break;
+    case 'n':
+      break;
+    case 'o':
+      break;
+    case 'p':
+      break;
+    case 'q':
+      break;
+    case 'r':
+      break;
+    case 's':
+      break;
+    case 't':
+      break;
+    case 'u':
+      break;
+    case 'v':
+      break;
+    case 'w':
+      break;
+    case 'x':
+      break;
+    case 'y':
+      break;
+    case 'z':
+      break;
+    case '1':
+      printChar(1,posX);
+      break;
+    case '2':
+      printChar(2,posX);
+      break;
+    case '3':
+      printChar(3,posX);
+      break;
+    case '4':
+      break;
+    case '5':
+      break;
+    case '6':
+      break;
+    case '7':
+      break;
+    case '8':
+      break;
+    case '9':
+      break;
+    case '0':
+      break;
+  }
+}
